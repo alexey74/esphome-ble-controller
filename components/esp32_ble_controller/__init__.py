@@ -212,7 +212,7 @@ def to_code(config):
         yield automation.build_automation(trigger, [], conf)
 
     # if there are incompatilibities with the framework set "lib_ldf_mode = deep" in platformio.ini and check the version
-    cg.add_library("ESP32 BLE Arduino", "2.0.0");
+    cg.add_library("BLE", None)
 
 ### Automation actions ############################################################################################
 
@@ -231,7 +231,7 @@ def maybe_simple_message(schema):
 def validate_printf(value):
     # https://stackoverflow.com/questions/30011379/how-can-i-parse-a-c-format-string-in-python
     # pylint: disable=anomalous-backslash-in-string
-    cfmt = """\
+    cfmt = r"""\
     (                                  # start of capture group 1
     %                                  # literal "%"
     (?:[-+0 #]{0,5})                   # optional flags
